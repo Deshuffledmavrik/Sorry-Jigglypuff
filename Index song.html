@@ -1,0 +1,413 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Message For Jigglypuff ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(135deg,#ffd6e7,#f8d6ff);
+}
+
+.page{
+    display:none;
+    height:100vh;
+    width:100vw;
+    padding:30px;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    flex-direction:column;
+}
+
+.page.active{
+    display:flex;
+}
+
+h1{
+    color:#ff4d8d;
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    max-width:700px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+button{
+    margin-top:25px;
+    padding:14px 28px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    background:#ff4d8d;
+    color:white;
+    font-size:16px;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    margin-top:20px;
+}
+
+.flip-card{
+    width:220px;
+    height:180px;
+    perspective:1000px;
+    cursor:pointer;
+}
+
+.flip-inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transition:transform .8s;
+    transform-style:preserve-3d;
+}
+
+.flip-card.flipped .flip-inner{
+    transform:rotateY(180deg);
+}
+
+.front,.back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:20px;
+    backface-visibility:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    background:white;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+.back{
+    transform:rotateY(180deg);
+}
+
+.hidden-jiggly{
+    position:absolute;
+    bottom:40px;
+    right:40px;
+    font-size:35px;
+    cursor:pointer;
+    animation:float 2s infinite ease-in-out;
+}
+
+@keyframes float{
+    50%{transform:translateY(-10px);}
+}
+
+#secretBox{
+    display:none;
+    margin-top:20px;
+}
+
+.heart{
+    font-size:90px;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+.floating-heart{
+    position:absolute;
+    color:white;
+    opacity:.7;
+    animation:rise 8s linear infinite;
+}
+
+@keyframes rise{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+#forgiveResult{
+    margin-top:25px;
+    font-size:22px;
+    font-weight:bold;
+    color:#ff4d8d;
+}
+
+.song-btn{
+    background:#7a4dff;
+}
+
+.small{
+    margin-top:10px;
+    font-size:14px;
+    color:#666;
+}
+</style>
+</head>
+<body>
+
+<div id="hearts"></div>
+
+<!-- PAGE 1 -->
+<div class="page active">
+    <div class="card">
+        <h1>💌 A Message For Jigglypuff</h1>
+
+        <p>
+        Warning:<br><br>
+        This page contains:<br>
+        • One guilty boyfriend<br>
+        • Excessive levels of apology<br>
+        • Mild emotional manipulation through cuteness
+        </p>
+
+        <button class="song-btn"
+        onclick="window.open('https://www.youtube.com/watch?v=CfihYWRWRTQ','_blank')">
+        🎵 Play Our Song
+        </button>
+
+        <br>
+
+        <button onclick="nextPage()">🎀 Fine, I'll Listen</button>
+    </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+    <div class="card">
+        <h1>💭 About Last Night</h1>
+
+        <p>
+        Jigglypuff,<br><br>
+
+        Last night I started a conversation about something sensitive.<br><br>
+
+        I should have been more careful.<br><br>
+
+        I wasn't trying to hurt you,<br>
+        but I understand that I disturbed you.<br><br>
+
+        And for that...<br><br>
+
+        I'm genuinely sorry.
+        </p>
+
+        <button onclick="nextPage()">Continue ➜</button>
+    </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+    <div class="card">
+        <h1>Tap The Cards ❤️</h1>
+
+        <div class="cards">
+
+            <div class="flip-card" onclick="flip(this)">
+                <div class="flip-inner">
+                    <div class="front">What I Did Wrong</div>
+                    <div class="back">
+                        I pushed a topic when I should have been protecting your peace.
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="flip(this)">
+                <div class="flip-inner">
+                    <div class="front">What I Should've Done</div>
+                    <div class="back">
+                        Listened better.<br>
+                        Thought more.<br>
+                        Spoken more gently.
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="flip(this)">
+                <div class="flip-inner">
+                    <div class="front">What I Want Now</div>
+                    <div class="back">
+                        To make things right with my favorite person.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <button onclick="nextPage()">Continue ➜</button>
+    </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+    <div class="card">
+        <h1>🔍 Secret Mission</h1>
+
+        <p>
+        There is a hidden Jigglypuff somewhere on this page.<br><br>
+        Find it.
+        </p>
+
+        <div id="secretBox">
+            <h2>✨ SECRET MESSAGE ✨</h2>
+            <br>
+            <p>
+            Marriage or not...<br><br>
+
+            Our wedding story will always be
+            spicier than Saloni's.<br><br>
+
+            And honestly?<br><br>
+
+            That is a hill I am willing to die on. 😌
+            </p>
+        </div>
+
+        <button onclick="nextPage()">Continue ➜</button>
+
+        <div class="hidden-jiggly"
+        onclick="document.getElementById('secretBox').style.display='block'">
+        🎀
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+    <div class="card">
+        <h1>❤️ One More Thing</h1>
+
+        <p>
+        You know what the funny part is?<br><br>
+
+        Even after all this...<br><br>
+
+        you're still the first person I want to tell things to,<br><br>
+
+        the first notification I look for,<br><br>
+
+        and my favorite person to annoy.
+        </p>
+
+        <button onclick="nextPage()">Continue ➜</button>
+    </div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+    <div class="card">
+        <div class="heart">❤️</div>
+
+        <h1>I'm Sorry, Jigglypuff</h1>
+
+        <p>
+        I know saying sorry doesn't magically fix things.<br><br>
+
+        But your feelings matter to me.<br><br>
+
+        If something hurts you, it matters.<br>
+        If something disturbs you, it matters.<br><br>
+
+        Because you matter.<br><br>
+
+        A lot.<br><br>
+
+        I'll do better.
+        </p>
+
+        <button onclick="think()">🥺 I'll Think About It</button>
+
+        <button onclick="forgive()">💜 I Forgive You</button>
+
+        <div id="forgiveResult"></div>
+
+        <div class="small">
+        Achievement available: Survive Jigglypuff's Wrath
+        </div>
+    </div>
+</div>
+
+<script>
+
+const pages=document.querySelectorAll('.page');
+let current=0;
+
+function nextPage(){
+    pages[current].classList.remove('active');
+    current++;
+    pages[current].classList.add('active');
+}
+
+function flip(card){
+    card.classList.toggle('flipped');
+}
+
+function think(){
+    document.getElementById('forgiveResult').innerHTML=
+    "Fair. I'll wait. You're worth waiting for. ❤️";
+}
+
+function forgive(){
+
+    document.getElementById('forgiveResult').innerHTML=
+    "🎉 APOLOGY ACCEPTED 🎉<br><br>Achievement Unlocked:<br><b>Successfully Survived Jigglypuff's Wrath</b><br><br>Reward: One very relieved boyfriend ❤️";
+
+    for(let i=0;i<120;i++){
+
+        let conf=document.createElement('div');
+
+        conf.innerHTML=['🎉','✨','💜','❤️'][Math.floor(Math.random()*4)];
+
+        conf.style.position='fixed';
+        conf.style.left=Math.random()*100+'vw';
+        conf.style.top=Math.random()*100+'vh';
+        conf.style.fontSize=(20+Math.random()*20)+'px';
+
+        document.body.appendChild(conf);
+
+        setTimeout(()=>conf.remove(),4000);
+    }
+}
+
+for(let i=0;i<30;i++){
+    let h=document.createElement('div');
+    h.className='floating-heart';
+    h.innerHTML='❤';
+    h.style.left=Math.random()*100+'vw';
+    h.style.animationDuration=(5+Math.random()*5)+'s';
+    h.style.fontSize=(15+Math.random()*25)+'px';
+    document.getElementById('hearts').appendChild(h);
+}
+
+</script>
+
+</body>
+</html>
+```
